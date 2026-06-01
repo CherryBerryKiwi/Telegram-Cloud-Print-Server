@@ -1,9 +1,10 @@
 README - AUTO TELEGRAM AND SAMBA PRINT SYSTEM USING PDFtoPrinter
+HOANGTHISD@GMAIL.COM
 =============================================
 
 HOW TO USE:
 - Download this, install_requirements.bat
-- Copy everything to C:\chrome-auto-print, create folders "C:\chrome-auto-print\printing" and "printing\Done Jobs"
+- Copy everything to C:\chrome-auto-print, rename folder "printing_example" to "printing"
 - Share C:\chrome-auto-print\printing over the LAN using Samba (if needed).
 - Edit the [set token and rename this file to telegram_listener.py].py 
 - Then run run_all.bat
