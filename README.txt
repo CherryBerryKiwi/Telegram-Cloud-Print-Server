@@ -4,9 +4,9 @@ HOANGTHISD@GMAIL.COM
 
 HOW TO USE:
 - Download this, install_requirements.bat
-- Copy everything to C:\chrome-auto-print, rename folder "printing_example" to "printing"
+- Copy everything to C:\chrome-auto-print, rename the folder "printing"
 - Share C:\chrome-auto-print\printing over the LAN using Samba (if needed).
-- Edit the [set token and rename this file to telegram_listener.py].py 
+- Edit the file "telegram_listener.py"
 - Then run run_all.bat
 =======
 
