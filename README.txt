@@ -21,6 +21,7 @@ The logic:
 
 Main changes:
 - Completely headless
+- No client print service needed
 - No Chrome Print Preview.
 - No window.print().
 - No Print button clicking.
