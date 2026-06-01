@@ -14,12 +14,13 @@ HOW TO USE:
 The logic:
 - start.py continuously watches the "printing" folder.
 - When a new file appears, it opens the file in Chrome to render, then save as PDF.
-- It reads settings from printing/print_settings.config and print with PDFtoPrinter.exe
+- It applies settings from printing/print_settings.config and print with PDFtoPrinter.exe
 - After printing, the original file is moved to Done Jobs.
 - telegram_listener.py receives files/links from Telegram and saves them to the printing folder.
 - You can also share the "printing" folder over the LAN using Samba. Just copy files into that folder, and the printer server will handle the rest.
 
 Main changes:
+- Completely headless
 - No Chrome Print Preview.
 - No window.print().
 - No Print button clicking.
@@ -34,7 +35,7 @@ PRINT FLOW
    Original PDF -> PDFtoPrinter.exe -> Printer
 
 2. .url / web links / HTML / images / TXT:
-   Chrome headless renders the file/link into a temporary 76x130mm PDF,
+   Chrome headless renders the file/link into a temporary (default settings 76x130mm PDF),
    then PDFtoPrinter.exe sends it to the printer.
 
 FILES
