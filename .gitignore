@@ -1,0 +1,11 @@
+# Python bytecode cache
+__pycache__/
+
+# Local development profile folder
+dev_profile/
+**/dev_profile/
+/__pycache__
+/_render_wrappers
+/_rendered_jobs
+/printing
+telegram_listener.py
