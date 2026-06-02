@@ -1,6 +1,6 @@
 README - AUTO TELEGRAM AND SAMBA PRINT SYSTEM USING PDFtoPrinter.exe
 HOANGTHISD@GMAIL.COM
-=============================================
+=======
 
 HOW TO USE:
 - Download this, install Python 3.x, install_requirements.bat, install Chrome.
