@@ -49,7 +49,8 @@ from telegram.ext import (
 # =============================================================================
 
 # Token from BotFather.
-BOT_TOKEN = "123456:abcxyz"
+from bot_secrets import BOT_TOKEN, ALLOWED_CHAT_IDS
+
 
 # Folder for saving files received from Telegram.
 # To save into the printing folder next to this file:
@@ -61,7 +62,7 @@ PRINT_DIR = Path(__file__).resolve().parent / "printing"
 # Only allow these chat_id values to send files.
 # Use [] for no restriction; anyone who knows the bot can send files.
 # Example: ALLOWED_CHAT_IDS = [123456789, 987654321]
-ALLOWED_CHAT_IDS: list[int] = [654321]
+
 
 # HTML download limit for URLs, to avoid downloading overly large files by mistake.
 MAX_HTML_DOWNLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
@@ -428,6 +429,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
     await reply_if_enabled(update, f"Saved text:\n{final_path.name}")
     context.application.create_task(reply_print_status_later(msg, final_path))
+
 
 async def handle_other_attachment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """

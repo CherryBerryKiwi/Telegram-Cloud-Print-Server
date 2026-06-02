@@ -8,4 +8,4 @@ dev_profile/
 /_render_wrappers
 /_rendered_jobs
 /printing
-telegram_listener.py
+bot_secrets.py
