@@ -281,18 +281,38 @@ async def reply_if_enabled(update: Update, text: str) -> None:
         await update.effective_message.reply_text(text)
 
 async def reply_print_status_later(msg, final_path: Path):
-    await asyncio.sleep(60)
+    max_attempts = 4
+    wait_sec = 15
 
-    if final_path.exists():
+    try:
+        for attempt in range(1, max_attempts + 1):
+            await asyncio.sleep(wait_sec)
+
+            # Nếu file đã rời khỏi thư mục printing => coi như đã xử lý xong
+            if not final_path.exists():
+                await msg.reply_text(
+                    "✅ Printing is probably complete.\n"
+                    f"The file has left the 'printing' folder:\n{final_path.name}"
+                )
+                return
+
+            log.info(
+                "Print status check %s/%s: file still exists: %s",
+                attempt,
+                max_attempts,
+                final_path,
+            )
+
+        # Sau 4 lần, mỗi lần cách nhau 15 giây, file vẫn còn
         await msg.reply_text(
-            "⚠️ It's been 60 seconds and the printing isn't finished yet. An error has occurred, please check the server.\n"
-            f"The file is still in the 'printing' folder waiting to print:\n{final_path.name}"
+            "❌ Printing may have failed.\n"
+            f"After {max_attempts} checks, the file is still in the 'printing' folder:\n"
+            f"{final_path.name}\n\n"
+            "Please check the print server, printer, or start.py."
         )
-    else:
-        await msg.reply_text(
-            "✅ Printing is complete.\n"
-            f"The file has been moved to Done Jobs:\n{final_path.name}"
-        )
+
+    except Exception as e:
+        log.warning("reply_print_status_later error for %s: %s", final_path, e)
 # =============================================================================
 # HANDLERS
 # =============================================================================
